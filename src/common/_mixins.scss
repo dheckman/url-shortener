@@ -1,0 +1,7 @@
+@mixin typeface($weight, $style, $size) {
+  font-family: Futura, Trebuchet MS, Arial, sans-serif;
+  font-size: $size;
+  font-stretch: normal;
+  font-style: $style;
+  font-weight: $weight;
+}
