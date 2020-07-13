@@ -22,7 +22,6 @@ The only directive for this project was to use React, everything else was up to 
 
 ## Todo:
 
-* Add Webpack for bundling
 * Store API key on server
 * Custom form validation 
 * Better, more desciptive error handling
