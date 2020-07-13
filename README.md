@@ -22,14 +22,14 @@ The only directive for this project was to use React, everything else was up to 
 
 ## Todo:
 
-Add Webpack for bundling
-Store API key on server
-Custom form validation 
-Better, more desciptive error handling
-Better testing. Maybe create a mock file to mock API requests.
-Prop Types (or Typescript?)
-Handle no results in list vs. handling too many (pagination)
-Objects returned from GET /links should have unique id
+* Add Webpack for bundling
+* Store API key on server
+* Custom form validation 
+* Better, more desciptive error handling
+* Better testing. Maybe create a mock file to mock API requests.
+* Prop Types (or Typescript?)
+* Handle no results in list vs. handling too many (pagination)
+* Objects returned from GET /links should have unique id
 
 ## Running the local server
 
