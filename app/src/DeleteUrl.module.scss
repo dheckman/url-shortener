@@ -1,0 +1,7 @@
+@import 'common/variables';
+@import 'common/mixins';
+
+.item {
+  color: $gray-font;
+  display: flex;
+}

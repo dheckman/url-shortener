@@ -1,0 +1,36 @@
+@import 'common/variables';
+@import 'common/mixins';
+
+.item {
+  background-color: $primary-yellow;
+  border-radius: 4px;
+  color: $gray-font;
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  width: 50%;
+}
+
+.item li {
+  display: flex;
+  flex: 2 0 0;
+  flex-direction: column;
+}
+
+.original_url,
+.short_url,
+.slug {
+  @include typeface(bold, normal, 16px);
+  text-transform: uppercase;
+}
+
+.delete {
+  cursor: pointer;
+  display: flex;
+  flex: 0;
+  flex-direction: column;
+  margin-top: -10px;
+}

@@ -1,0 +1,52 @@
+@import 'common/variables';
+@import 'common/mixins';
+
+.form_wrapper {
+  margin-top: 50px;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+}
+
+.input {
+  border: 1px solid $border-gray;
+  border-radius: 4px 0 0 4px;
+  padding: 1rem 2rem;
+  width: 50%;
+
+  &::placeholder {
+    @include typeface(normal, normal, 12px);
+  }
+}
+
+.slug_input {
+  border: 1px solid $border-gray;
+  border-radius: 0 4px 4px 0;
+  padding: 1rem 2rem;
+  margin-right: 5px;
+
+  &::placeholder {
+    @include typeface(normal, normal, 12px);
+  }
+}
+
+.button {
+  @include typeface(bold, normal, 16px);
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: $primary-pink;
+  border: 0;
+  border-radius: 4px;
+  color: $white;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0;
+  padding: 1rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 250ms ease-in-out;
+}
