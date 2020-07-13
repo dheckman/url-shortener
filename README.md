@@ -22,13 +22,13 @@ The only directive for this project was to use React, everything else was up to 
 
 ## Todo:
 
-* Store API key on server
 * Custom form validation 
 * Better, more desciptive error handling
 * Better testing. Maybe create a mock file to mock API requests.
 * Prop Types (or Typescript?)
 * Handle no results in list vs. handling too many (pagination)
 * Objects returned from GET /links should have unique id
+* Store API key on server
 
 ## Running the local server
 

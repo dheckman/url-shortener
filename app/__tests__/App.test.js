@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import './setupTests';
-import App from './containers/App';
-import UrlShortener from './components/UrlShortener';
+import App from '../containers/App';
+import UrlShortener from '../components/UrlShortener';
 
 beforeAll(() => {
   global.fetch = jest.fn();
