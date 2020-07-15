@@ -23,7 +23,7 @@ The only directive for this project was to use React, everything else was up to 
 ## Todo:
 
 * Custom form validation 
-* Better, more desciptive error handling
+* Better, more descriptive error handling
 * Better testing. Maybe create a mock file to mock API requests.
 * Prop Types (or Typescript?)
 * Handle no results in list vs. handling too many (pagination)
