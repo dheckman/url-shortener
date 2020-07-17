@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../src/UrlShortener.module.scss';
 
 const UrlShortener = (props) => {
-  const { updateUrlValue, createShortUrl  } = props;
+  const { updateUrlValue, createShortUrl, urlToCreate, slug } = props;
 
   return (
     <div className={styles.form_wrapper}>
@@ -15,6 +15,7 @@ const UrlShortener = (props) => {
           id="url"
           aria-labelledby="UrlShortener_submit"
           onChange={event => updateUrlValue('urlToCreate', event.target.value)}
+          value={urlToCreate}
         />
         <input
           placeholder="slug"
@@ -24,6 +25,7 @@ const UrlShortener = (props) => {
           id="slug"
           aria-labelledby="UrlShortener_submit"
           onChange={event => updateUrlValue('slug', event.target.value)}
+          value={slug}
         />
         <button
           className={styles.button}

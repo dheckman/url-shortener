@@ -10,6 +10,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       urlList: [],
+      urlToCreate: '',
+      slug: '',
     };
   }
 
@@ -25,7 +27,7 @@ class App extends React.Component {
       })
     } catch (error) {
       this.setState({
-        error: "Failed to load. Please reload the page.",
+        error: "Error loading urls. Please reload the page.",
       })
     }
   }
@@ -38,6 +40,7 @@ class App extends React.Component {
 
   createShortUrl = async (e) => {
     e.preventDefault();
+    const isUrlValid = this.checkUrlValidity();
     const { urlToCreate, slug } = this.state;
     if (urlToCreate) {
       try {
@@ -60,9 +63,19 @@ class App extends React.Component {
     }
   }
 
+  checkUrlValidity = () => {
+    const { urlToCreate } = this.state;
+    const urlRegex = new RegExp(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/g);
+    if (!urlRegex.test(urlToCreate)) {
+      return false;
+    }
+    return true;
+  }
+
   handleDelete = async (slug) => {
     const { urlList } = this.state;
     window.confirm('Are you sure you want to delete this url?');
+    // TODO - add try/catch //
     await fetch.remove(`http://api.bely.me/links/${slug}`)
     const updatedUrlList = urlList.filter((url) => url.slug !== slug);
     this.setState({
@@ -71,8 +84,18 @@ class App extends React.Component {
   }
 
   render() {
-    const { urlToCreate, urlList, error } = this.state;
+    const { urlToCreate, urlList, error, slug } = this.state;
     const errorText = error ? error : '';
+    const filteredUrlList = urlList.filter(url => url.url.includes(urlToCreate)).map((url) => (
+      <ErrorBoundary errorMessage={error}>
+      <UrlList
+        url={url.url}
+        slug={url.slug}
+        shortUrl={url.short_url}
+        handleDelete={this.handleDelete}
+      />
+    </ErrorBoundary>
+    ));
     return (
       <div className={styles.container}>
         <header className={styles.header}>
@@ -92,18 +115,7 @@ class App extends React.Component {
         </div>
         <ul className={styles.url_list}>
           <p className={styles.error}>{errorText}</p>
-          {(
-            urlList.map((url) => (
-              <ErrorBoundary errorMessage={error}>
-                <UrlList
-                  url={url.url}
-                  slug={url.slug}
-                  shortUrl={url.short_url}
-                  handleDelete={this.handleDelete}
-                />
-              </ErrorBoundary>
-            ))
-          )}
+          {filteredUrlList}
         </ul>
       </div>
     );
