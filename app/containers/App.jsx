@@ -11,7 +11,6 @@ class App extends React.Component {
     this.state = {
       urlList: [],
       urlToCreate: '',
-      slug: '',
     };
   }
 
@@ -42,7 +41,7 @@ class App extends React.Component {
     e.preventDefault();
     const isUrlValid = this.checkUrlValidity();
     const { urlToCreate, slug } = this.state;
-    if (urlToCreate) {
+    if (urlToCreate && isUrlValid) {
       try {
         const newUrl = await fetch.create('http://api.bely.me/links', {
           url: urlToCreate,
@@ -51,7 +50,7 @@ class App extends React.Component {
         this.setState(prevState => ({
           urlToCreate: '',
           slug: '',
-          urlList: [...prevState.urlList, newUrl]
+          urlList: [newUrl, ...prevState.urlList]
         }))
       } catch (error) {
         error.text().then((errorMessage) => {
@@ -60,6 +59,10 @@ class App extends React.Component {
           })
         })
       }
+    } else {
+      this.setState({
+        error: "Invalid url format. Please enter a valid url and try again."
+      })
     }
   }
 
